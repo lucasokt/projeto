@@ -9,7 +9,7 @@ function App() {
           <p>Bolo</p>
           <span>FESTIVAIS DE FATIAS</span>
         </div>
-        <a href="#">Participar</a>
+        <a href="/">Participar</a>
       </header>
 
       <section className="hero">
