@@ -1,0 +1,169 @@
+*{
+      box-sizing: border-box;
+}
+
+header {
+  width: min(100% - 48px, 980px);
+  margin: 0 auto;
+  padding: 32px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header > div {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+header p {
+  margin: 0;
+  color: #4a2921;
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+header span {
+  color: #9d7061;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+header a {
+  color: #df4054;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.hero-texto {
+  max-width: 530px;
+}
+
+.eyebrow {
+  margin: 0 0 22px;
+  color: #df4054;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.hero {
+  width: min(100% - 48px, 980px);
+  margin: 72px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 72px;
+}
+
+.hero-imagem {
+  width: 370px;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.hero-imagem img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.hero h1 {
+  margin: 0;
+  color: #4a2921;
+  font-family: Georgia, serif;
+  font-size: 72px;
+  line-height: 0.9;
+  letter-spacing: -3px;
+}
+
+.hero h1 span {
+  color: #df4054;
+  font-style: italic;
+}
+
+body{
+    margin: 0;
+    background-color: #f7f0e5;
+    color: #4a2921;
+    font-family: Arial, sans-serif;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+button{
+  font: inherit;
+  cursor: pointer;
+}
+
+.hero-botoes button {
+  padding: 13px 20px;
+  border: 1px solid #df4054;
+  border-radius: 999px;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.hero-botoes {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.hero-botoes button:first-child {
+  background-color: #df4054;
+  color: white;
+}
+
+.hero-botoes button:last-child {
+  background-color: transparent;
+  color: #4a2921;
+}
+
+.hero-botoes button:hover {
+  transform: translateY(-3px);
+}
+
+.hero-botoes button:first-child:hover {
+  background-color: #b92e42;
+}
+
+.hero-botoes button:last-child:hover {
+  background-color: white;
+}
+
+  .hero-numeros{
+    display: flex;
+    gap: 99px;
+  }
+
+  .hero-numeros > div{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  .hero-numeros strong{
+    font-size: 30px;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+
+  .hero-numeros span{
+    font-size: 12px;
+    color: #9d7061;
+    letter-spacing: 1px;
+  }
+
+  .como-funciona {
+  width: 90%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 80px 0;
+}
