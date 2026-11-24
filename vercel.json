@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "create-react-app",
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "rewrites": [
+    { "source": "/como-funciona", "destination": "/index.html" },
+    { "source": "/bolos", "destination": "/index.html" },
+    { "source": "/anunciar", "destination": "/index.html" }
+  ]
+}

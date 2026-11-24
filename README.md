@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Bolo — Festivais de Fatias
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O Bolo é um projeto acadêmico da AB2 de Programação Web I. Ele apresenta a proposta dos festivais de fatias e permite que produtores anunciem bolos e visitantes encontrem anúncios na vitrine.
 
-## Available Scripts
+## Funcionalidades
 
-In the project directory, you can run:
+- **Início** apresenta o projeto e os destaques da AB1.
+- **Como funciona** explica as etapas de participação nos festivais.
+- **Bolos** exibe os anúncios cadastrados e os exemplos da AB1 em seções separadas. A busca por nome ou produtor pode ser combinada com o filtro por categoria.
+- **Quero vender** valida e envia os dados do bolo. A API grava o anúncio no MySQL, e a vitrine o consulta mesmo depois de atualizar a página.
 
-### `npm start`
+## Tecnologias
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+React com Create React App, React Router, React Icons e CSS com Flexbox no frontend. Node.js e Express na API, com MySQL 8.4 e o driver `mysql2`. Os endpoints `GET /api/bolos` e `POST /api/bolos` consultam e cadastram anúncios, respectivamente.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Executar localmente
 
-### `npm test`
+1. Use Node.js 20.6 ou superior e MySQL 8.4. Na pasta do projeto, instale as dependências com `npm ci`.
+2. No cliente MySQL, em uma sessão administrativa, execute `SOURCE server/schema.sql` a partir da pasta do projeto. O script prepara `bolo.bolos` caso a tabela ainda não exista. Se já houver uma conta da aplicação, reutilize-a e confira suas permissões. Para criar a conta local pela primeira vez, use:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```sql
+   CREATE USER 'bolo_app'@'127.0.0.1' IDENTIFIED BY RANDOM PASSWORD;
+   GRANT SELECT, INSERT ON bolo.bolos TO 'bolo_app'@'127.0.0.1';
+   ```
 
-### `npm run build`
+3. Se `server/.env` ainda não existir, copie o modelo no PowerShell com `Copy-Item server/.env.example server/.env`. Preencha `DB_PASSWORD` localmente com a senha da conta da aplicação e confira host, porta, banco e usuário. O padrão local é `127.0.0.1:3306`, banco `bolo` e `DB_SSL=false`. O arquivo real é ignorado pelo Git.
+4. Em um terminal, execute `npm run server` para iniciar o Express na porta 3001. Em outro, execute `npm start` e abra [localhost:3000](http://localhost:3000). O proxy do React encaminha `/api` ao Express.
+5. Cadastre um bolo em **Quero vender**. Em **Bolos**, procure pelo nome e atualize a página para conferir se o anúncio continua na vitrine.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Use `npm run build` para compilar o frontend em `build/`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Preview na Vercel
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+O projeto usa `vercel.json` para servir o build do React, manter as rotas ao recarregar e encaminhar `/api/bolos` à função que reutiliza o Express. A branch de Preview é `ab2-preview`. Cadastre em **Settings → Environment Variables**, no ambiente **Preview**, as variáveis do MySQL online. Use os valores do painel do Enzonic.
 
-### `npm run eject`
+| Variável | Valor |
+|---|---|
+| `DB_HOST` | Host do MySQL mostrado no Enzonic, sem protocolo nem porta. |
+| `DB_PORT` | Porta indicada no painel do Enzonic. |
+| `DB_NAME` | `main`, onde está a tabela `bolos`. |
+| `DB_USER` | Usuário da conexão MySQL do Enzonic. |
+| `DB_PASSWORD` | Senha desse usuário, cadastrada como segredo na Vercel. |
+| `DB_SSL` | `true`. |
+| `DB_SSL_CA` | Certificado CA em PEM, apenas se o provedor exigir uma CA própria. Com certificado reconhecido pelo Node.js, deixe a variável ausente. |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Use uma conta com permissões de consulta e cadastro sobre `main.bolos`. Depois de gerar o Preview, abra as quatro páginas, cadastre um bolo de demonstração e confira a vitrine após recarregar. Faça essa validação antes de integrar a branch à `main`.
